@@ -1,0 +1,74 @@
+{
+  "reports": [
+    {
+      "id": "7a08c76f",
+      "type": "Currency",
+      "category": "Counterfeit / Invalid Note - 500 new",
+      "risk_score": 95,
+      "details": "Suspect note submitted. Failed features: Security Thread. Confidence: 20% counterfeit likelihood.",
+      "reported_at": "2026-06-23 01:24 PM",
+      "status": "Escalated to I4C / NCRB",
+      "reference_id": "NCRB-2026-33328"
+    },
+    {
+      "id": "0c714ba7",
+      "type": "Currency",
+      "category": "Counterfeit \u20b9500 - Verification Failure",
+      "risk_score": 95,
+      "details": "Suspect note submitted. Failed features: Security Thread, Mahatma Gandhi Watermark, Bleed Lines & Tactile Marks, Serial Number, Ashoka Pillar Emblem. Confidence: 100% counterfeit likelihood.",
+      "reported_at": "2026-06-23 12:38 PM",
+      "status": "Escalated to I4C / NCRB",
+      "reference_id": "NCRB-2026-71341"
+    },
+    {
+      "id": "542f7849",
+      "type": "Currency",
+      "category": "Counterfeit \u20b9500 - Verification Failure",
+      "risk_score": 95,
+      "details": "Suspect note submitted. Failed features: Security Thread, Mahatma Gandhi Watermark, Bleed Lines & Tactile Marks, Serial Number, Ashoka Pillar Emblem. Confidence: 100% counterfeit likelihood.",
+      "reported_at": "2026-06-23 12:28 PM",
+      "status": "Escalated to I4C / NCRB",
+      "reference_id": "NCRB-2026-05982"
+    },
+    {
+      "id": "1db3f03b",
+      "type": "Message",
+      "category": "Digital Arrest",
+      "risk_score": 99,
+      "details": "Victim: John Doe | Phone: 9876543210 | Lost: Rs. 01000 via UPI | Original Text: \"URGENT: This is FedEx customer care. Your parcel containing MDMA drugs and fake passports sent to Ca...\"",
+      "reported_at": "2026-06-23 12:27 PM",
+      "status": "Escalated to I4C / NCRB",
+      "reference_id": "NCRB-2026-65824"
+    },
+    {
+      "id": "1",
+      "type": "Message",
+      "category": "Digital Arrest",
+      "risk_score": 95,
+      "details": "Claimed to be CBI Mumbai Customs regarding MDMA found in a FedEx package. Demanded Rs. 5 Lakhs transfer.",
+      "reported_at": "2026-06-23 09:30 AM",
+      "status": "Escalated to I4C",
+      "reference_id": "NCRB-2026-98124"
+    },
+    {
+      "id": "2",
+      "type": "Call",
+      "category": "Job Scam",
+      "risk_score": 88,
+      "details": "Telegram rating task scam. Asked for Rs. 50,000 security deposit to upgrade to VIP level.",
+      "reported_at": "2026-06-22 04:15 PM",
+      "status": "Under Investigation",
+      "reference_id": "NCRB-2026-97645"
+    },
+    {
+      "id": "3",
+      "type": "Currency",
+      "category": "Counterfeit Rs. 500 Note",
+      "risk_score": 90,
+      "details": "Detected fake note at local retail store. Security thread printed directly with flat colors.",
+      "reported_at": "2026-06-22 11:05 AM",
+      "status": "Logged for Intelligence",
+      "reference_id": "NCRB-2026-97423"
+    }
+  ]
+}
