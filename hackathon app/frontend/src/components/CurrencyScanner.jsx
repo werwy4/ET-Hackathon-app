@@ -27,7 +27,7 @@ export default function CurrencyScanner() {
     formData.append("denomination", denomination);
 
     try {
-      const response = await fetch("http://localhost:8000/api/scan-note", {
+      const response = await fetch("/api/scan-note", {
         method: "POST",
         body: formData
       });
@@ -97,7 +97,7 @@ export default function CurrencyScanner() {
       formData.append("file", mockFile);
       formData.append("denomination", denomination);
       
-      const uploadResponse = await fetch("http://localhost:8000/api/scan-note", {
+      const uploadResponse = await fetch("/api/scan-note", {
         method: "POST",
         body: formData
       });
@@ -123,7 +123,7 @@ export default function CurrencyScanner() {
         details: `Suspect note submitted. Failed features: ${result.features.filter(f => f.status === "Failed").map(f => f.name).join(", ")}. Confidence: ${100 - result.confidence}% counterfeit likelihood.`
       };
       
-      await fetch("http://localhost:8000/api/report-scam", {
+      await fetch("/api/report-scam", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)

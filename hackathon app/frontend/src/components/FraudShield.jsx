@@ -78,7 +78,7 @@ export default function FraudShield() {
     setLoading(true);
     setResult(null);
     try {
-      const response = await fetch("http://localhost:8000/api/analyze-message", {
+      const response = await fetch("/api/analyze-message", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: inputText })
@@ -112,7 +112,7 @@ export default function FraudShield() {
         details: `Victim: ${reportFormData.fullName} | Phone: ${reportFormData.phoneNumber} | Lost: Rs. ${reportFormData.amountLost} via ${reportFormData.paymentMode} | Original Text: "${inputText.substring(0, 100)}..."`
       };
       
-      const response = await fetch("http://localhost:8000/api/report-scam", {
+      const response = await fetch("/api/report-scam", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)

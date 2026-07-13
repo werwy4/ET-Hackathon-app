@@ -9,11 +9,11 @@ export default function Dashboard({ setTab }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const statsRes = await fetch("http://localhost:8000/api/statistics");
+        const statsRes = await fetch("/api/statistics");
         const statsData = await statsRes.json();
         setStats(statsData);
 
-        const reportsRes = await fetch("http://localhost:8000/api/reports");
+        const reportsRes = await fetch("/api/reports");
         const reportsData = await reportsRes.json();
         setReports(reportsData);
       } catch (err) {

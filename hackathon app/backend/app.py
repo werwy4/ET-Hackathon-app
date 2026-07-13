@@ -4,6 +4,8 @@ import uuid
 import json
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from typing import Optional, List
 
@@ -104,6 +106,47 @@ async def get_reports_endpoint():
 @app.get("/api/statistics")
 async def get_statistics_endpoint():
     return database.get_statistics()
+
+# Serve static files from the React frontend build directory
+frontend_dist_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "dist"))
+
+# Check if the build directory exists
+if os.path.exists(frontend_dist_dir):
+    # Mount assets folder
+    assets_dir = os.path.join(frontend_dist_dir, "assets")
+    if os.path.exists(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+    
+    # Root route to serve the React index.html
+    @app.get("/")
+    async def serve_index():
+        index_path = os.path.join(frontend_dist_dir, "index.html")
+        if os.path.exists(index_path):
+            return FileResponse(index_path)
+        return {"message": "Frontend build files not found"}
+
+    # Catch-all route to serve the React index.html for SPA frontend
+    @app.get("/{catchall:path}")
+    async def serve_react_app(catchall: str):
+        # Allow requests to go through if they don't start with 'api'
+        if catchall.startswith("api"):
+            raise HTTPException(status_code=404, detail="API route not found")
+        
+        # Check if the requested file exists in the build dir (e.g., public folder assets, favicon, etc.)
+        file_path = os.path.join(frontend_dist_dir, catchall)
+        if catchall and os.path.exists(file_path) and os.path.isfile(file_path):
+            return FileResponse(file_path)
+            
+        # Default to serving index.html
+        index_path = os.path.join(frontend_dist_dir, "index.html")
+        if os.path.exists(index_path):
+            return FileResponse(index_path)
+        return {"message": "Frontend build files not found"}
+else:
+    # If frontend dist does not exist, serve a basic index for warning
+    @app.get("/")
+    async def serve_warning():
+        return {"message": "Frontend build directory not found. Please run 'npm run build' inside the frontend directory."}
 
 if __name__ == "__main__":
     import uvicorn
